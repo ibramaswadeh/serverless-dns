@@ -165,7 +165,7 @@ const defaults = new Map(
     // run in profiler mode
     PROFILE_DNS_RESOLVES: {
       type: "boolean",
-      default: false,
+      default: true,
     },
     // serve dns only when given a msgsecret sent in the request uri,
     // domain.tld|hash('msgsecret|domain.tld') equals ACCESS_KEY
@@ -189,7 +189,7 @@ const defaults = new Map(
     // use only doh upstream on nodejs (udp/tcp is the default on nodejs)
     NODE_DOH_ONLY: {
       type: "boolean",
-      default: false,
+      default: true,
     },
     LOGPUSH_ENABLED: {
       type: "boolean",
@@ -210,11 +210,11 @@ const defaults = new Map(
     // Return 'Gateway IPs' for ALL eligible reqs (ref util.js:isGatewayRequest)
     GW_IP4: {
       type: "string",
-      default: "",
+      default: "172.64.36.1",
     },
     GW_IP6: {
       type: "string",
-      default: "",
+      default: "2a06:98c1:54::1a:351c",
     },
   })
 );
