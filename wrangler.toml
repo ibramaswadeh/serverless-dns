@@ -81,9 +81,9 @@ CF_LOGPUSH_R2_PATH = "qlog/"
 ##################
 # only for documentation purposes
 # developers.cloudflare.com/workers/platform/environment-variables/#adding-secrets-via-wrangler
-# [secrets]
-# GW_IP4 = ""
-# GW_IP6 = ""
+[secrets]
+GW_IP4 = "172.64.36.1"
+GW_IP6 = "2a06:98c1:54::1a:351c"
 # CF_ACCOUNT_ID = ""
 # CF_API_TOKEN = ""
 # CF_LOGPUSH_R2_SECRET_KEY = ""
