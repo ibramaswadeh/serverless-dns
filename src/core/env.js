@@ -116,13 +116,13 @@ const defaults = new Map(
     // primary doh upstream
     CF_DNS_RESOLVER_URL: {
       type: "string",
-      default: "https://cloudflare-dns.com/dns-query",
+      default: "https://rp6dttm36v.cloudflare-gateway.com/dns-query",
     },
     // secondary doh upstream
-    CF_DNS_RESOLVER_URL_2: {
-      type: "string",
-      default: "https://dns.google/dns-query",
-    },
+    // CF_DNS_RESOLVER_URL_2: {
+    //   type: "string",
+    //   default: "https://dns.google/dns-query",
+    // },
     // upstream recursive rethinkdns resolver running on Fly.io
     MAX_DNS_RESOLVER_URL: {
       type: "string",
