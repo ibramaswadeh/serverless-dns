@@ -81,7 +81,7 @@ const defaults = new Map(
     // global log level (debug, info, warn, error)
     LOG_LEVEL: {
       type: "string",
-      default: "debug",
+      default: "info",
     },
     // set via secret, cloudflare account-id
     CF_ACCOUNT_ID: {
@@ -127,7 +127,7 @@ const defaults = new Map(
     MAX_DNS_RESOLVER_URL: {
       type: "string",
       // must always end with a trailing slash
-      default: "https://max.rethinkdns.com/",
+      default: "https://sky.rethinkdns.com/",
     },
     // max doh request processing timeout some requests may have to wait
     // for blocklists to download before being responded to.
