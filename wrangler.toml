@@ -2,11 +2,11 @@ name = "serverless-dns"
 main = "./dist/worker.js"
 workers_dev = true
 # logpush job is setup to capture from envs ending: log, pro, or one
-logpush = false
+logpush = true
 # use node_compat or custom build
 # node_compat = true
 compatibility_date = "2023-03-21"
-send_metrics = true
+send_metrics = false
 minify = true
 upload_source_maps = true
 
