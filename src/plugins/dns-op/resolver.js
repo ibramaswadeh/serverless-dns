@@ -160,9 +160,7 @@ export default class DNSResolver {
     // may be null or empty-obj (stamp then needs to be got from blf)
     // may be a obj { domainName: String -> blockstamps: Uint16Array }
     const stamps = ctx.domainBlockstamp;
-
     const domain = decodedpacket?.questions?.[0]?.name ?? "unknown-domain";
-    this.log.i(rxid, "Resolving domain:", domain);
 
     let blf = this.bw.getBlocklistFilter();
     const isBlfDisabled = this.bw.disabled();
@@ -173,7 +171,7 @@ export default class DNSResolver {
     const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
 
     this.blocker.blockQuestion(rxid, /* out*/ q, blInfo);
-    this.log.d(rxid, "q block?", q.isBlocked, "blf?", isBlfSetup);
+    this.log.i("q block?", q.isBlocked, "blf?", isBlfSetup, "Resolving domain:", domain);
 
     if (q.isBlocked) {
       this.primeCache(rxid, q, dispatcher);
@@ -423,7 +421,7 @@ DNSResolver.prototype.resolveDnsUpstream = async function (
     // upstream to resolvers
     for (const rurl of resolverUrls) {
       if (util.emptyString(rurl)) {
-        this.log.w(rxid, "missing resolver url", rurl);
+        this.log.d(rxid, "missing resolver url", rurl);
         continue;
       }
 

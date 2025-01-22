@@ -29,9 +29,10 @@ LOG_LEVEL = "info"
 WORKER_ENV = "production"
 CLOUD_PLATFORM = "cloudflare"
 
-[observability]
+[observability.logs]
 enabled = true
-head_sampling_rate = 0.01
+invocation_logs = false
+
 
 ##################
 #------PROD------#
