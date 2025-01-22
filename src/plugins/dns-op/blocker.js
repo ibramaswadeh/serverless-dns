@@ -102,7 +102,7 @@ export class DnsBlocker {
     for (const n of names) {
       const name = n.toLowerCase().replace(/\.$/, "");
       if (this.whitelistedDomains.has(name)) {
-        continue; // Skip blocking
+        return r; // Skip blocking
       }
 
       r = rdnsutil.doBlock(n, blockInfo, blockstamps);
