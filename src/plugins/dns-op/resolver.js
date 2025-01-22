@@ -171,7 +171,7 @@ export default class DNSResolver {
     const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
 
     this.blocker.blockQuestion(rxid, /* out*/ q, blInfo);
-    this.log.i("q block?", q.isBlocked, "Resolving domain:", domain, q.dnsResolverUrl, q.flag, q.userBlocklistInfo, q.userBlocklistFlag);
+    this.log.i("q block?", q.isBlocked, "Resolving domain:", domain, q.dnsResolverUrl, "flag: ", q.flag, "blockListInfo: ", q.userBlocklistInfo, "flag1: ", q.userBlocklistFlag);
 
     if (q.isBlocked) {
       this.primeCache(rxid, q, dispatcher);
