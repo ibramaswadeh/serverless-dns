@@ -27,6 +27,10 @@ export function cacheSize() {
   return _dnsCacheSize;
 }
 
+export function whitelistedDomains() {
+  return env("WHITELISTED_DOMAINS") || "";
+}
+
 export function isAnswer(packet) {
   if (util.emptyObj(packet)) return false;
 

@@ -28,6 +28,7 @@ globs = ["**/*.js"]
 LOG_LEVEL = "info"
 WORKER_ENV = "production"
 CLOUD_PLATFORM = "cloudflare"
+WHITELISTED_DOMAINS = ""
 
 [observability.logs]
 enabled = true

@@ -165,7 +165,7 @@ const defaults = new Map(
     // run in profiler mode
     PROFILE_DNS_RESOLVES: {
       type: "boolean",
-      default: true,
+      default: false,
     },
     // serve dns only when given a msgsecret sent in the request uri,
     // domain.tld|hash('msgsecret|domain.tld') equals ACCESS_KEY
