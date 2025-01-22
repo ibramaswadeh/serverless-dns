@@ -13,6 +13,10 @@ import * as dnsutil from "../../commons/dnsutil.js";
 export class DnsBlocker {
   constructor() {
     this.log = log.withTags("DnsBlocker");
+
+    this.whitelistedDomains = new Set(
+      envutil.whitelistedDomains()?.split(',')?.map(d => d.trim().toLowerCase()) || []
+    );
   }
 
   /**
@@ -92,6 +96,13 @@ export class DnsBlocker {
   block(names, blockInfo, blockstamps) {
     let r = pres.rdnsNoBlockResponse();
     for (const n of names) {
+      
+      const name = n.toLowerCase().replace(/\.$/, "");
+      if (this.whitelistedDomains.has(name)) {
+        this.log.d("Skipping block for domain:", name);
+        continue; // Skip blocking
+      }
+
       r = rdnsutil.doBlock(n, blockInfo, blockstamps);
       if (r.isBlocked) break;
     }
