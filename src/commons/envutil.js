@@ -427,5 +427,6 @@ export function metrics() {
 }
 
 export function whitelistedDomains() {
-  return env("WHITELISTED_DOMAINS") || "";
+  if (!envManager) return null;
+  return envManager.get("WHITELISTED_DOMAINS") || null;
 }
