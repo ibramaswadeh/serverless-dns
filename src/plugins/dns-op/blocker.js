@@ -9,6 +9,7 @@
 import * as pres from "../plugin-response.js";
 import * as rdnsutil from "../rdns-util.js";
 import * as dnsutil from "../../commons/dnsutil.js";
+import * as envutil from "../../commons/envutil.js";
 
 export class DnsBlocker {
   constructor() {
