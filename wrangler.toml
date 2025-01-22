@@ -30,10 +30,6 @@ WORKER_ENV = "production"
 CLOUD_PLATFORM = "cloudflare"
 WHITELISTED_DOMAINS = ""
 
-[observability.logs]
-enabled = true
-invocation_logs = false
-
 
 ##################
 #------PROD------#

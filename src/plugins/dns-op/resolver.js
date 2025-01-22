@@ -33,10 +33,6 @@ export default class DNSResolver {
     this.transport = dns53 || null;
     this.log = log.withTags("DnsResolver");
 
-    this.whitelistedDomains = new Set(
-      envutil.whitelistedDomains()?.split(',')?.map(d => d.trim().toLowerCase()) || []
-    );
-
     this.measurements = [];
     this.coalstats = { tot: 0, pub: 0, empty: 0, try: 0 };
     this.profileResolve = envutil.profileDnsResolves();
@@ -170,16 +166,9 @@ export default class DNSResolver {
     const isBlfDisabled = this.bw.disabled();
     let isBlfSetup = rdnsutil.isBlocklistFilterSetup(blf);
 
-    // if the domain is whitelisted, we need to unblock it
-    if (this.whitelistedDomains.has(domain.toLowerCase().replace(/\.$/, ""))) {
-      const q = await this.makeRdnsResponse(rxid, rawpacket, blf, null);
-      q.isBlocked = false;
-      return q;
-    } else {
-      // if both blocklist-filter (blf) and stamps are not setup, question-block
-      // is a no-op, while we expect answer-block to catch the block regardless.
-      const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
-    }
+    // if both blocklist-filter (blf) and stamps are not setup, question-block
+    // is a no-op, while we expect answer-block to catch the block regardless.
+    const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
 
     this.blocker.blockQuestion(rxid, /* out*/ q, blInfo);
     this.log.i("Domain: ",domain, q.isBlocked ? "BLOCKED" : "");
