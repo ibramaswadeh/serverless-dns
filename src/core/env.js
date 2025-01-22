@@ -29,7 +29,7 @@ const defaults = new Map(
     // development is always "local" (a laptop /a server, for example)
     WORKER_ENV: {
       type: "string",
-      default: "development",
+      default: "production",
     },
     // the env stage deno is running in
     DENO_ENV: {
@@ -189,7 +189,7 @@ const defaults = new Map(
     // use only doh upstream on nodejs (udp/tcp is the default on nodejs)
     NODE_DOH_ONLY: {
       type: "boolean",
-      default: true,
+      default: false,
     },
     LOGPUSH_ENABLED: {
       type: "boolean",
