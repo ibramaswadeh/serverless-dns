@@ -170,13 +170,15 @@ export default class DNSResolver {
     const isBlfDisabled = this.bw.disabled();
     let isBlfSetup = rdnsutil.isBlocklistFilterSetup(blf);
 
-    // if both blocklist-filter (blf) and stamps are not setup, question-block
-    // is a no-op, while we expect answer-block to catch the block regardless.
-    const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
-
     // if the domain is whitelisted, we need to unblock it
-    if (this.whitelistedDomains.has(domain)) {
+    if (this.whitelistedDomains.has(domain.toLowerCase().replace(/\.$/, ""))) {
+      const q = await this.makeRdnsResponse(rxid, rawpacket, blf, null);
       q.isBlocked = false;
+      return q;
+    } else {
+      // if both blocklist-filter (blf) and stamps are not setup, question-block
+      // is a no-op, while we expect answer-block to catch the block regardless.
+      const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
     }
 
     this.blocker.blockQuestion(rxid, /* out*/ q, blInfo);
