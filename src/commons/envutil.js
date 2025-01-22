@@ -425,3 +425,7 @@ export function metrics() {
 
   return nobinding;
 }
+
+export function whitelistedDomains() {
+  return env("WHITELISTED_DOMAINS") || "";
+}
