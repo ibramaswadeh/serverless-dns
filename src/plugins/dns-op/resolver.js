@@ -161,6 +161,9 @@ export default class DNSResolver {
     // may be a obj { domainName: String -> blockstamps: Uint16Array }
     const stamps = ctx.domainBlockstamp;
 
+    const domain = decodedpacket?.questions?.[0]?.name ?? "unknown-domain";
+    this.log.i(rxid, "Resolving domain:", domain);
+
     let blf = this.bw.getBlocklistFilter();
     const isBlfDisabled = this.bw.disabled();
     let isBlfSetup = rdnsutil.isBlocklistFilterSetup(blf);
