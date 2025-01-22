@@ -31,7 +31,7 @@ export default class DNSResolver {
     // deno bundler not happy with typedef as it imports node:dgram
     // @type {import("../../core/node/dns-transport.js").Transport}
     this.transport = dns53 || null;
-    // this.log = log.withTags("DnsResolver");
+    this.log = log.withTags("DnsResolver");
 
     this.measurements = [];
     this.coalstats = { tot: 0, pub: 0, empty: 0, try: 0 };
@@ -171,7 +171,7 @@ export default class DNSResolver {
     const q = await this.makeRdnsResponse(rxid, rawpacket, blf, stamps);
 
     this.blocker.blockQuestion(rxid, /* out*/ q, blInfo);
-    this.log.i(domain, q.isBlocked ? "BLOCKED" : "");
+    this.log.i("Domain: ",domain, q.isBlocked ? "BLOCKED" : "");
 
     if (q.isBlocked) {
       this.primeCache(rxid, q, dispatcher);

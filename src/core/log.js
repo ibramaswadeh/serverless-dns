@@ -95,26 +95,26 @@ export default class Log {
       d: (...args) => {
         this.d(this.now() + " D", ...tags, ...args);
       },
-      // i: (...args) => {
-      //   this.i(this.now() + " I", ...tags, ...args);
-      // },
+      i: (...args) => {
+        this.i(this.now() + " I", ...tags, ...args);
+      },
       w: (...args) => {
         this.w(this.now() + " W", ...tags, ...args);
       },
       e: (...args) => {
         this.e(this.now() + " E", ...tags, ...args);
       },
-      // q: (...args) => {
-      //   this.l(this.now() + " Q", ...tags, ...args);
-      // },
-      // qStart: (...args) => {
-      //   this.l(this.now() + " Q", ...tags, this.border());
-      //   this.l(this.now() + " Q", ...tags, ...args);
-      // },
-      // qEnd: (...args) => {
-      //   this.l(this.now() + " Q", ...tags, ...args);
-      //   this.l(this.now() + " Q", ...tags, this.border());
-      // },
+      q: (...args) => {
+        this.l(this.now() + " Q", ...tags, ...args);
+      },
+      qStart: (...args) => {
+        this.l(this.now() + " Q", ...tags, this.border());
+        this.l(this.now() + " Q", ...tags, ...args);
+      },
+      qEnd: (...args) => {
+        this.l(this.now() + " Q", ...tags, ...args);
+        this.l(this.now() + " Q", ...tags, this.border());
+      },
       tag: (t) => {
         tags.push(t);
       },
