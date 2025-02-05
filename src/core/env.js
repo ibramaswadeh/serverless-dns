@@ -116,18 +116,18 @@ const defaults = new Map(
     // primary doh upstream
     CF_DNS_RESOLVER_URL: {
       type: "string",
-      default: "https://rp6dttm36v.cloudflare-gateway.com/dns-query",
+      default: "https://1.1.1.1/dns-query",
     },
     // secondary doh upstream
     CF_DNS_RESOLVER_URL_2: {
       type: "string",
-      default: "https://rp6dttm36v.cloudflare-gateway.com/dns-query",
+      default: "https://1.0.0.1/dns-query",
     },
     // upstream recursive rethinkdns resolver running on Fly.io
     MAX_DNS_RESOLVER_URL: {
       type: "string",
       // must always end with a trailing slash
-      default: "https://sky.rethinkdns.com/",
+      default: "https://max.rethinkdns.com/",
     },
     // max doh request processing timeout some requests may have to wait
     // for blocklists to download before being responded to.
